@@ -1,0 +1,529 @@
+
+/* =================================
+   GENERAL
+================================= */
+
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 35px 5%;
+  
+    background: #ffffff;
+    color: #111111;
+  
+    font-family: 'Cinzel', serif;
+    letter-spacing: 2px;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  
+  /* =================================
+     MAIN CONTAINER
+  ================================= */
+  
+  .container {
+    width: 100%;
+    max-width: 1400px;
+    margin: auto;
+  }
+  
+  
+  /* =================================
+     HEADER
+  ================================= */
+  
+  .page-header {
+    text-align: center;
+    margin-bottom: 90px;
+  }
+  
+  .mainTitle {
+    font-size: clamp(38px, 5vw, 54px);
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.2;
+  }
+  
+  .subTitle {
+    font-size: 12px;
+    letter-spacing: 4px;
+    margin-top: 8px;
+  }
+  
+  
+  /* =================================
+     MAIN LAYOUT
+  ================================= */
+  
+  .main-layout {
+    display: grid;
+    grid-template-columns: 0.85fr 1.5fr;
+    align-items: center;
+    gap: 70px;
+  
+    width: 100%;
+  }
+  
+  
+  /* =================================
+     INPUT PANEL
+  ================================= */
+  
+  .input-panel {
+    width: 100%;
+    max-width: 450px;
+  }
+  
+  .panel-heading h2 {
+    font-size: 25px;
+    font-weight: 600;
+    margin: 0 0 10px;
+  }
+  
+  .panel-heading p {
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.3px;
+    color: #777777;
+    margin-bottom: 20px;
+  }
+  
+  
+  /* =================================
+     MODE SELECTOR
+  ================================= */
+  
+  .mode-section {
+    margin-bottom: 18px;
+  }
+  
+  .mode-section label {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+  
+  #modeSelect {
+    width: 100%;
+    padding: 13px;
+  
+    background: #fafafa;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+  
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #222222;
+  
+    cursor: pointer;
+    outline: none;
+  }
+  
+  #modeSelect:focus {
+    border-color: #c4aa8d;
+  }
+  
+  
+  /* =================================
+     WORD INPUT
+  ================================= */
+  
+  #wordInput {
+    width: 100%;
+    height: 300px;
+  
+    padding: 18px;
+    resize: vertical;
+  
+    background: #fafafa;
+    color: #111111;
+  
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+  
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+  
+    outline: none;
+    transition: border 0.2s ease;
+  }
+  
+  #wordInput:focus {
+    border-color: #c4aa8d;
+  }
+  
+  #wordInput::placeholder {
+    color: #888888;
+  }
+  
+  
+  /* =================================
+     BUTTONS
+  ================================= */
+  
+  button {
+    padding: 14px 20px;
+  
+    background: #c4aa8d;
+    color: #111111;
+  
+    border: none;
+    border-radius: 6px;
+  
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    letter-spacing: 1px;
+  
+    cursor: pointer;
+  
+    transition:
+      background 0.2s ease,
+      transform 0.2s ease;
+  }
+  
+  button:hover {
+    background: #f0ceb2;
+    transform: translateY(-2px);
+  }
+  
+  button:active {
+    transform: translateY(0);
+  }
+  
+  
+  /* INPUT ACTIONS */
+  
+  .input-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+  }
+  
+  .input-actions button {
+    flex: 1;
+  }
+  
+  
+  /* SPIN BUTTON */
+  
+  #spinBtn {
+    display: block;
+  
+    width: 100%;
+    margin: 20px 0 0;
+  
+    padding: 17px;
+  
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 3px;
+  }
+  
+  
+  /* TIMER BUTTON */
+  
+  #startTimerBtn {
+    display: none;
+  
+    width: 100%;
+    margin: 15px 0 0;
+  
+    padding: 17px;
+  
+    font-size: 15px;
+    letter-spacing: 2px;
+  }
+  
+  
+  /* =================================
+     WHEEL PANEL
+  ================================= */
+  
+  .wheel-panel {
+    width: 100%;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #wheelContainer {
+    position: relative;
+  
+    width: 100%;
+  
+    display: none;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #wheelCanvas {
+    display: block;
+  
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+  
+    border-radius: 50%;
+  }
+  
+  
+  /* =================================
+     WHEEL POINTER
+  ================================= */
+  
+  #pointer {
+    position: absolute;
+  
+    right: -8px;
+    top: 50%;
+  
+    transform: translateY(-50%);
+  
+    width: 0;
+    height: 0;
+  
+    border-top: 17px solid transparent;
+    border-bottom: 17px solid transparent;
+    border-right: 28px solid #c0392b;
+  
+    z-index: 5;
+  }
+  
+  
+  /* =================================
+     SPIN GLOW
+  ================================= */
+  
+  .spinGlow {
+    animation: glowPulse 1s infinite alternate;
+  }
+  
+  @keyframes glowPulse {
+    from {
+      box-shadow:
+        0 0 10px #f0ceb2,
+        0 0 20px #f0ceb2;
+    }
+  
+    to {
+      box-shadow:
+        0 0 25px #f0ceb2,
+        0 0 50px #f0ceb2;
+    }
+  }
+  
+  
+  /* =================================
+     SELECTED WORD
+  ================================= */
+  
+  #selectedWord {
+    width: 100%;
+    min-height: 55px;
+  
+    margin-top: 25px;
+  
+    text-align: center;
+  
+    font-size: clamp(25px, 3vw, 40px);
+    font-weight: 600;
+    letter-spacing: 2px;
+  
+    animation: pop 0.5s ease;
+  }
+  
+  @keyframes pop {
+    from {
+      transform: scale(0.7);
+      opacity: 0;
+    }
+  
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  
+  /* =================================
+     SAVED WORDS MODAL
+  ================================= */
+  
+  #savedUI {
+    position: fixed;
+    inset: 0;
+  
+    background: rgba(0, 0, 0, 0.6);
+  
+    display: none;
+    justify-content: center;
+    align-items: center;
+  
+    z-index: 100;
+  }
+  
+  #savedPanel {
+    background: #ffffff;
+  
+    width: min(92vw, 450px);
+    padding: 25px;
+  
+    border-radius: 10px;
+  
+    max-height: 75vh;
+    overflow-y: auto;
+  }
+  
+  #savedPanel h2 {
+    font-size: 20px;
+  }
+  
+  #closeSavedBtn {
+    float: right;
+  
+    padding: 5px 10px;
+  
+    background: transparent;
+    font-size: 20px;
+  }
+  
+  .savedSet {
+    margin-bottom: 15px;
+  }
+  
+  
+  /* =================================
+     FOOTER
+  ================================= */
+  
+  footer {
+    width: 100%;
+  
+    margin-top: 45px;
+    padding-bottom: 10px;
+  
+    text-align: center;
+  
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #777777;
+  }
+  
+  
+  /* =================================
+     TABLET
+  ================================= */
+  
+  @media (max-width: 950px) {
+  
+    body {
+      padding: 30px 4%;
+    }
+  
+    .main-layout {
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 35px;
+    }
+  
+    .page-header {
+      margin-bottom: 65px;
+    }
+  
+    #wheelCanvas {
+      max-width: 100%;
+    }
+  
+  }
+  
+  
+  /* =================================
+     MOBILE
+  ================================= */
+  
+  @media (max-width: 650px) {
+  
+    body {
+      padding: 25px 18px;
+      justify-content: flex-start;
+    }
+  
+    .container {
+      margin-top: 25px;
+    }
+  
+    .page-header {
+      margin-bottom: 45px;
+    }
+  
+    .mainTitle {
+      font-size: 40px;
+    }
+  
+    .subTitle {
+      font-size: 10px;
+    }
+  
+    .main-layout {
+      grid-template-columns: 1fr;
+      gap: 35px;
+    }
+  
+    .wheel-panel {
+      order: -1;
+    }
+  
+    #wheelCanvas {
+      max-width: min(85vw, 420px);
+    }
+  
+    .input-panel {
+      max-width: 100%;
+    }
+  
+    #wordInput {
+      height: 200px;
+    }
+  
+    #selectedWord {
+      font-size: 27px;
+    }
+  
+    footer {
+      margin-top: 40px;
+    }
+  
+  }
+  
+  
+  /* =================================
+     SMALL MOBILE
+  ================================= */
+  
+  @media (max-width: 380px) {
+  
+    .mainTitle {
+      font-size: 34px;
+    }
+  
+    .input-actions {
+      gap: 7px;
+    }
+  
+    .input-actions button {
+      padding: 12px 8px;
+      font-size: 10px;
+    }
+  
+  }
+  
